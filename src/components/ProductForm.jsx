@@ -8,7 +8,6 @@ function ProductForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
     alert(`{
       "name": ${name},
       "price": ${price},
