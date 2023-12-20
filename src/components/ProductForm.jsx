@@ -1,6 +1,23 @@
+import { useState } from "react";
+
 function ProductForm() {
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
+    alert(`{
+      "name": ${name},
+      "price": ${price},
+      "image": ${imageUrl},
+      "description": ${description},
+    }`);
+  }
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={handleSubmit}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -10,7 +27,10 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           />
         </label>
       </div>
@@ -22,7 +42,10 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            value={imageUrl}
+            onChange={(e) => {
+              setImageUrl(e.target.value);
+            }}
           />
         </label>
       </div>
@@ -33,8 +56,11 @@ function ProductForm() {
             id="price"
             name="price"
             type="number"
+            value={price}
             placeholder="Enter price here"
-            onChange={() => {}}
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
           />
         </label>
       </div>
@@ -45,8 +71,11 @@ function ProductForm() {
             id="description"
             name="description"
             type="text"
+            value={description}
             placeholder="Enter description here"
-            onChange={() => {}}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
             rows={4}
             cols={30}
           />
